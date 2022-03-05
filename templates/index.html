@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
+    <p class="mt-6">{{ form.code.label }}<br>
+            {{ form.code(class="form-control") }}<br>
+            {% for error in form.code.errors %}
+                <p content="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    </form>
+    {% for el in result %}
+        <div class="alert alert-success" role="alert">
+            <h2>Название: {{ el.title }}</h2>
+            <h3>Описание: {{ el.about }}</h3>
+            <h4>Цена: {{ el.price }}</h4>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
