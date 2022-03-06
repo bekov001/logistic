@@ -49,5 +49,5 @@ if __name__ == '__main__':
     #     </p>
     # """
     # print(a.replace("about", "price"))
-    db_session.global_init("db/mars.db")
+    db_session.global_init("db/code.db")
     app.run()
