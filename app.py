@@ -8,6 +8,7 @@ from forms.input_form import FindForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite://db/code.db"
 
 
 @app.route("/", methods=["POST", "GET"])
@@ -36,6 +37,11 @@ def add_code():
     return render_template("add_code.html", form=form)
 
 
+def main():
+    db_session.global_init("db/code.db")
+    app.run()
+
+
 if __name__ == '__main__':
     # a = """
     # <p>
@@ -49,5 +55,4 @@ if __name__ == '__main__':
     #     </p>
     # """
     # print(a.replace("about", "price"))
-    db_session.global_init("db/code.db")
-    app.run()
+    main()
