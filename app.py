@@ -8,6 +8,7 @@ from forms.input_form import FindForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/code.db?check_same_thread=False"
 
 
 @app.route("/", methods=["POST", "GET"])
