@@ -14,3 +14,4 @@ class Products(SqlAlchemyBase):
     about = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     code = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     price = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
+    path_to_image = sqlalchemy.Column(sqlalchemy.String, nullable=True)

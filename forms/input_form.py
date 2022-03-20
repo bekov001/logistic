@@ -5,5 +5,5 @@ from wtforms.validators import DataRequired
 
 
 class FindForm(FlaskForm):
-    code = IntegerField('Track Code', validators=[DataRequired()])
+    code = StringField('Track Code', validators=[DataRequired()])
     submit = SubmitField('Submit')

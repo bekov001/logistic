@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <h1>авторизация MarsOne</h1>
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
     {{ form.csrf_token }}
     <p>{{ message }}</p>
@@ -43,8 +43,59 @@
                 </p>
             {% endfor %}
         </p>
-    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        {{ form.delivery_type}}
+        <p>
+            {{ form.amount.label }}<br>
+            {{ form.amount(class="form-control", id="delivery_type") }}<br>
+            {% for error in form.amount.errors %}
+                <p content="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </p>
+        {{ form.result.label }}
+        <div class="input-group">
+         <input required type="number" class="form-control" placeholder="СМ" id="1">
+            <p class="m-2">*</p>
+            <input required type="number" class="form-control" placeholder="СМ" id="2">
+            <p class="m-2">*</p>
+            <input required type="number" class="form-control" placeholder="СМ"  id="3">
+            <p class="m-2">=</p>
+            {{ form.result(class="form-control", id="result", placeholder="ИТОГ") }}<br>
+            {% for error in form.result.errors %}
+                <p content="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+            <p class="btn btn-primary m-0" id="count">Посчитать</p>
+            </div>
+  <p>
+            {{ form.weight.label }}<br>
+            {{ form.weight(class="form-control", id="weight") }}<br>
+            {% for error in form.weight.errors %}
+                <p content="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </p>
+    <p>
+            {{ form.photos.label }}<br>
+            {{ form.photos(class="form-control") }}<br>
+            {% for error in form.photos.errors %}
+                <p content="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </p>
+    <div class="row">
+        <p class="col-sm">Цена доставки:</p>
+        {{ form.delivery_price(class="form-control col-sm", id="result", placeholder="ИТОГ") }}<br>
+<!--    <p class="btn btn-primary">Посчитать</p>-->
+<!--    </div>-->
+</div>
+    <p>{{ form.submit(type="добавить", class="btn btn-primary") }}</p>
 </form>
 </div>
-
+<script src="static/js/get_volume.js"></script>
+<script src="static/js/get_delivery.js"></script>
 {% endblock %}
