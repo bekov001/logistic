@@ -13,11 +13,10 @@ from forms.input_form import FindForm
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/code.db?check_same_thread=False"
-img_path = "static/img/"
+# img_path = "static/img/"
+img_path = "/home/anuarka/logistic/static/img/"
 # app.config['RESIZE_URL'] = 'https://mysite.com/'
 # app.config['RESIZE_ROOT'] = '/static/img/'
-
-resize = flask_resize.Resize(app)
 
 @app.route("/", methods=["POST", "GET"])
 def index():
@@ -47,7 +46,7 @@ def add_code():
         db_sess = db_session.create_session()
         product = Products(title=form.title.data, about=form.about.data,
                            price=form.price.data, code=form.code.data,
-                           path_to_image=path,
+                           path_to_image="/static/img/"+filename,
                            delivery_price=form.delivery_price.data,
                            weight=form.weight.data, volume=form.result.data,
                            amount=form.amount.data,

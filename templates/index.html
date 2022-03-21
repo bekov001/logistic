@@ -25,7 +25,7 @@
             <h4>Тип доставки: {{ el.delivery_type }}</h4>
             <h4>Вес: {{ el.weight }}</h4>
             <h4>Цена доставки: {{ el.delivery_price }}$</h4>
-            <img src="/{{ el.path_to_image }}" alt="фото" style="max-width: 400px;max-height:600px">
+            <img src="{{ el.path_to_image }}" alt="фото" style="max-width: 400px;max-height:600px">
         </div>
     {% endfor %}
 </div>
