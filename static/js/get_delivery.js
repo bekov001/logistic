@@ -29,7 +29,8 @@ function func(index) {
     $("#delivery_price").val(result);
     console.log()
 }
-$.getJSON("http://192.168.1.57:5000/api/weight_info", function (json) {
+
+$.getJSON("http://" + window.location.hostname + "/api/weight_info", function (json) {
     put_variable(json)
     }
 );
