@@ -30,7 +30,7 @@ function func(index) {
     console.log()
 }
 
-$.getJSON("http://" + window.location.hostname + "/api/weight_info", function (json) {
+$.getJSON(window.location.protocol + window.location.host + "/api/weight_info", function (json) {
     put_variable(json)
     }
 );

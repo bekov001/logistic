@@ -1,5 +1,6 @@
 import os
 from random import choice
+
 from flask import Flask, redirect, render_template, request, abort
 from werkzeug.utils import secure_filename
 
@@ -13,7 +14,10 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/code.db?check_same_thread=False"
 img_path = "static/img/"
+# app.config['RESIZE_URL'] = 'https://mysite.com/'
+# app.config['RESIZE_ROOT'] = '/static/img/'
 
+resize = flask_resize.Resize(app)
 
 @app.route("/", methods=["POST", "GET"])
 def index():
@@ -39,6 +43,7 @@ def add_code():
             img_path, filename
         )
         f.save(path)
+
         db_sess = db_session.create_session()
         product = Products(title=form.title.data, about=form.about.data,
                            price=form.price.data, code=form.code.data,
