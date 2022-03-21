@@ -20,6 +20,11 @@
             <h2>Название: {{ el.title }}</h2>
             <h3>Описание: {{ el.about }}</h3>
             <h4>Цена: {{ el.price }}</h4>
+            <h4>Количевство: {{ el.amount }}</h4>
+            <h4>Объем: {{ el.volume }}</h4>
+            <h4>Тип доставки: {{ el.delivery_type }}</h4>
+            <h4>Вес: {{ el.weight }}</h4>
+            <h4>Цена доставки: {{ el.delivery_price }}$</h4>
             <img src="/{{ el.path_to_image }}" alt="фото">
         </div>
     {% endfor %}

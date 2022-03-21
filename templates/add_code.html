@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-    <h1>авторизация MarsOne</h1>
+    <h1>Добавить товар</h1>
 <form action="" method="post" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
     {{ form.csrf_token }}
@@ -43,7 +43,13 @@
                 </p>
             {% endfor %}
         </p>
+        {{ form.delivery_type.label}}<br>
         {{ form.delivery_type}}
+    {% for error in form.delivery_type.errors %}
+                <p content="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
         <p>
             {{ form.amount.label }}<br>
             {{ form.amount(class="form-control", id="delivery_type") }}<br>
@@ -88,12 +94,18 @@
             {% endfor %}
         </p>
     <div class="row">
-        <p class="col-sm">Цена доставки:</p>
-        {{ form.delivery_price(class="form-control col-sm", id="result", placeholder="ИТОГ") }}<br>
+        {{ form.delivery_price.label(class="col-sm")}}
+        {{ form.delivery_price(class="form-control col-sm", id="delivery_price", placeholder="ИТОГ") }}<br>
+        {% for error in form.delivery_price.errors %}
+                <p content="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
 <!--    <p class="btn btn-primary">Посчитать</p>-->
 <!--    </div>-->
 </div>
-    <p>{{ form.submit(type="добавить", class="btn btn-primary") }}</p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}
+</p>
 </form>
 </div>
 <script src="static/js/get_volume.js"></script>
