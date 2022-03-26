@@ -8,8 +8,8 @@ from variables import PROTOCOL, URL
 
 
 class AddCodeForm(FlaskForm):
-    # choices = ("авиаперевозки", "авиапочты", "транспортная перевозка", "контейнерная перевозка")
-    choices = [el[0] for el in get(f"{PROTOCOL}://{URL}//api/weight_info").json()["info"]]
+    choices = ("авиаперевозки", "авиапочты", "транспортная перевозка", "контейнерная перевозка")
+    # choices = [el[0] for el in get(f"{PROTOCOL}://{URL}//api/weight_info").json()["info"]]
     title = StringField('название', validators=[DataRequired()])
     about = TextAreaField('Описание', validators=[DataRequired()])
     code = StringField('Код клиента', validators=[DataRequired()])
