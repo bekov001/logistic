@@ -20,6 +20,7 @@ img_path = "/home/anuarka/logistic/static/img/"
 
 @app.route("/", methods=["POST", "GET"])
 def index():
+    """Найти товар по коду"""
     form = FindForm()
     result = []
     if form.validate_on_submit():
@@ -33,6 +34,7 @@ def index():
 
 @app.route("/add_code", methods=["POST", "GET"])
 def add_code():
+    """Добавление кода"""
     form = AddCodeForm()
 
     if form.validate_on_submit():
@@ -58,6 +60,7 @@ def add_code():
 
 
 def main():
+    """Главная функция запуска"""
     db_session.global_init("db/code.db")
     app.register_blueprint(delivery_api.blueprint)
     app.debug = True

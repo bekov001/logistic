@@ -8,6 +8,9 @@ from variables import PROTOCOL, URL
 
 
 class AddCodeForm(FlaskForm):
+    """
+    Форма для добавления товара
+    """
     choices = ("авиаперевозки", "авиапочты", "транспортная перевозка", "контейнерная перевозка")
     # choices = [el[0] for el in get(f"{PROTOCOL}://{URL}//api/weight_info").json()["info"]]
     title = StringField('название', validators=[DataRequired()])
@@ -21,6 +24,3 @@ class AddCodeForm(FlaskForm):
     photos = FileField("Фото", validators=[FileRequired()])
     delivery_price = FloatField("Цена доставки", render_kw={'readonly': True})
     submit = SubmitField('Добавить')
-
-
-data = ["volume", "delivery_type", "delivery_price", "amount", "weight"]
