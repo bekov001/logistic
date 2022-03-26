@@ -7,7 +7,23 @@
     {{ form.hidden_tag() }}
     {{ form.csrf_token }}
     <p>{{ message }}</p>
-
+     <p>
+        {{ form.delivery_type.label}}<br>
+        {{ form.delivery_type}}
+    {% for error in form.delivery_type.errors %}
+                <p content="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}</p>
+    <p>
+            {{ form.code.label }}<br>
+            {{ form.code(class="form-control") }}<br>
+            {% for error in form.code.errors %}
+                <p content="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </p>
    <p>         {{ form.title.label }}<br>
             {{ form.title(class="form-control") }}<br>
             {% for error in form.title.errors %}
@@ -25,10 +41,10 @@
                 </p>
             {% endfor %}
         </p>
-<p>
-            {{ form.code.label }}<br>
-            {{ form.code(class="form-control") }}<br>
-            {% for error in form.code.errors %}
+    <p>
+            {{ form.amount.label }}<br>
+            {{ form.amount(class="form-control", id="delivery_type") }}<br>
+            {% for error in form.amount.errors %}
                 <p content="alert alert-danger" role="alert">
                     {{ error }}
                 </p>
@@ -38,22 +54,6 @@
             {{ form.price.label }}<br>
             {{ form.price(class="form-control") }}<br>
             {% for error in form.price.errors %}
-                <p content="alert alert-danger" role="alert">
-                    {{ error }}
-                </p>
-            {% endfor %}
-        </p>
-        {{ form.delivery_type.label}}<br>
-        {{ form.delivery_type}}
-    {% for error in form.delivery_type.errors %}
-                <p content="alert alert-danger" role="alert">
-                    {{ error }}
-                </p>
-            {% endfor %}
-        <p>
-            {{ form.amount.label }}<br>
-            {{ form.amount(class="form-control", id="delivery_type") }}<br>
-            {% for error in form.amount.errors %}
                 <p content="alert alert-danger" role="alert">
                     {{ error }}
                 </p>

@@ -3,10 +3,13 @@ from flask_wtf.file import FileRequired
 from wtforms import StringField, SubmitField, IntegerField, TextAreaField, \
     RadioField, FileField, FloatField
 from wtforms.validators import DataRequired, NumberRange, InputRequired
+from requests import get
+from variables import PROTOCOL, URL
 
 
 class AddCodeForm(FlaskForm):
-    choices = ("авиаперевозки", "авиапочты", "транспортная перевозка", "контейнерная перевозка")
+    # choices = ("авиаперевозки", "авиапочты", "транспортная перевозка", "контейнерная перевозка")
+    choices = [el[0] for el in get(f"{PROTOCOL}://{URL}//api/weight_info").json()["info"]]
     title = StringField('название', validators=[DataRequired()])
     about = TextAreaField('Описание', validators=[DataRequired()])
     code = StringField('Код клиента', validators=[DataRequired()])
